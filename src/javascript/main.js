@@ -1,47 +1,67 @@
-import { fetchData } from './fetch'
 
-// const key = '03fb54ebf904aeecf7fbb0e169f0c7ad';
-// const urlWether = `https://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=${key}`;
+class Main {
+  gr = ''
+  constructor(containerElement, data) {
+    this.containerElement = containerElement
+
+    this.feels_like = Math.round(data.main.feels_like - 273)
+    this.name = data.name
+    this.country = data.sys.country
+    this.temp = Math.round(data.main.temp - 273)
+    this.datas = new Date(data.dt * 1000).getHours() + ':' + new Date(data.dt * 1000).getMinutes()
+    this.deg = data.wind.deg
+    this.speed = data.wind.speed
+    this.icon = data.weather[0].icon
+
+    this.init(data)
+  }
 
 
+  init() {
+    this.render(this.data)
+  }
+  compas(deg) {
+    if (this.deg > 0 && this.deg < 90) {
+      this.gr = 'северо-восток'
+      return this.gr
+    } else if (this.deg > 90 && this.deg < 180) {
+      this.gr = 'юго-восток'
+      return this.gr
+    } else if (this.deg > 180 && this.deg < 270) {
+      this.gr = 'юго-запад'
+      return this.gr
+    } else if (this.deg > 270) {
+      this.gr = 'северо-запад'
+      return this.gr
+    }
+  }
 
 
-// class Main {
-//   constructor(containerElement, data) {
-//     this.containerElement = containerElement
-//     this.init(this.data)
-//   }
+  template(data) {
+    this.compas(this.deg)
+    const template = `
+      <p id="country">${this.name}, ${this.country}</p>
+      <p id="time">🕜 ${this.datas}</p>
+      <div class="container__column">
+      <div><img class="icon" src="http://openweathermap.org/img/wn/${this.icon}@2x.png" alt=""></div>
+        <h1>${this.temp} °C</h1>
+        <p>feels like ${this.feels_like} °C</p>
+      </div>
+      <div class="container__row">
+        <div class="container__item"> 🧭${this.gr}</div>
+        <div class="container__item">💨 ${this.speed} m/s</div>
+      </div>
+    `
+
+    return template
+  }
 
 
-//   init() {
-//     this.render(this.data)
-//   }
-//   template(data) {
-//     const template = `
-//     <div class="container" id="container">
-//       <p id="country">${this.city}</p>
-//       <p id="time">hgfhgf</p>
-//       <div class="container__column">
-//         <img src="" alt="">
-//         <h1>hgfhg</h1>
-//         <p>hghgfhg</p>
-//       </div>
-//       <div class="container__row">
-//         <div class="container__item">hgfhg</div>
-//         <div class="container__item">hgfhgf</div>
-//       </div>
-//     </div>
-//     `
-//     return template
-//   }
-//   render(data) {
-//     const containerElement = document.querySelector('#container')
-//     containerElement.innerHTML += this.template(data)
-//   }
-// }
+  render(data) {
+    const template = this.template(data)
+    this.containerElement.innerHTML += template
+  }
+}
 
-// fetchData('GET', urlWether, (data) => {
-//   new Main(data)
-// })
 
-// export { Main }
+export { Main }

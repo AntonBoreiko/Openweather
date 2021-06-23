@@ -2,14 +2,38 @@
 
 // --------------------------------------
 @import "./scaffold";
+.wrapper {
+  width: 800px;
+  margin: 0px auto;
+}
 
 #container {
-  min-height: 500px;
-  background: lightgreen;
+  padding: 20px 50px;
+  min-height: 100px;
+  background: #32cd32;
+  font-size: 22px;
+  color: #fff;
+}
+.icon {
+  color: #fff;
+}
+#ulElement {
+  padding: 20px 50px;
+  background-color: #999;
+  // text-align: center;
+  // margin: 0px auto;
+}
+.liElement {
+  display: flex;
+  justify-content: space-between;
+  img {
+    width: 50px;
+    height: 50px;
+  }
 }
 .container__column {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 30px;
 }
 .container__row {
   margin: 0px auto;
