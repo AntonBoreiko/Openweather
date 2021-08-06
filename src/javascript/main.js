@@ -22,16 +22,16 @@ class Main {
   }
   compas(deg) {
     if (this.deg > 0 && this.deg < 90) {
-      this.gr = 'северо-восток'
+      this.gr = 'northeast'
       return this.gr
     } else if (this.deg > 90 && this.deg < 180) {
-      this.gr = 'юго-восток'
+      this.gr = 'southeast'
       return this.gr
     } else if (this.deg > 180 && this.deg < 270) {
-      this.gr = 'юго-запад'
+      this.gr = 'southwest'
       return this.gr
     } else if (this.deg > 270) {
-      this.gr = 'северо-запад'
+      this.gr = 'northwest'
       return this.gr
     }
   }
