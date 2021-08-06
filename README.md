@@ -1,4 +1,4 @@
-# Openweathermap
+# Openweather
 ## Погодный виджет на основе открытого API - https://openweathermap.org
 
 1. `git clone https://github.com/AntonBoreiko/bolierplate-parcel.git`
