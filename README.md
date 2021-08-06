@@ -6,4 +6,4 @@
 3. `npm install`
 4. `npm run dev `
 
-<img src="./src/img/scr.PNG">
+<img src="./src/img/scr.PNG" style="width: 300px; height: 500px;">
